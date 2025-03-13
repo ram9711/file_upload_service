@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: file-upload-service
+spec:
+  type: NodePort  # Or LoadBalancer if using a cloud provider
+  selector:
+    app: file-upload-service
+  ports:
+    - protocol: TCP
+      port: 5000       # The port on which the service is exposed inside the cluster
+      targetPort: 5000 # The container port
+      nodePort: 31000  # (Optional) Specify a node port or let Kubernetes assign one
