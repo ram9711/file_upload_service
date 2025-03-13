@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: file-upload-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: file-upload-service
+  template:
+    metadata:
+      labels:
+        app: file-upload-service
+    spec:
+      containers:
+      - name: file-upload-service
+        image: file_upload_service:latest
+        imagePullPolicy: Never  # Use "Never" if using local images in Docker Desktop's Kubernetes
+        ports:
+        - containerPort: 5000
